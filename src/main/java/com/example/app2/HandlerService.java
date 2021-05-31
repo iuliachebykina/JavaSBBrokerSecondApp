@@ -28,9 +28,8 @@ public class HandlerService {
         this.messageService = messageService;
     }
 
-
     @Bean
-    public Function<Message, Answer> input(){
+    public Function<Message, Answer> input() {
         return this::handleMessage;
     }
 
