@@ -12,9 +12,9 @@ import javax.validation.constraints.Size;
 public class Message {
     private int id;
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 50, message = "Слишком большое или слишком маленькое имя. Размер имени должен быть от 3 до 50 знаков")
     private String name;
-    @Pattern(regexp = "^7[0-9]{10}")
+    @Pattern(regexp = "^7[0-9]{10}", message = "Неправильно введен номер телефона")
     private String phoneNumber;
 
 }

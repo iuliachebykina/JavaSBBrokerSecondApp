@@ -1,12 +1,11 @@
 server:
   port: 9090
 
-#rabbitmq settings for Spring Cloud Stream to use
 spring:
   cloud:
     stream:
       bindings:
         input-in-0:
           destination: fromFirst
-        output-out-0:
+        input-out-0:
           destination: fromSecond
