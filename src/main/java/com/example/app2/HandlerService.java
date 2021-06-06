@@ -36,6 +36,7 @@ public class HandlerService {
         } catch (JsonProcessingException e) {
             log.error(e.getMessage());
         }
+
         var time = LocalDateTime.now().format(formatter);
         Answer answer;
         try {
