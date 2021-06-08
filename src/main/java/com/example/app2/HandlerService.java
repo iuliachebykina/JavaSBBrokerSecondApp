@@ -17,12 +17,12 @@ public class HandlerService {
     private static final Logger log = LoggerFactory.getLogger(HandlerService.class);
     private final ObjectMapper mapper;
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    private final UserRepo repo;
 
-    private final MessageService messageService;
 
-    public HandlerService(ObjectMapper mapper, MessageService messageService) {
+    public HandlerService(ObjectMapper mapper, UserRepo repo) {
         this.mapper = mapper;
-        this.messageService = messageService;
+        this.repo = repo;
     }
 
     @Bean
@@ -40,10 +40,10 @@ public class HandlerService {
         var time = LocalDateTime.now().format(formatter);
         Answer answer;
         try {
-            messageService.register(message);
+            repo.save(message);
             answer = new Answer(message.getId(), State.VALID, time, "Данные прошли валидацию");
         } catch (Exception e) {
-            answer = new Answer(message.getId(), State.INVALID, time, e.getMessage());
+            answer = new Answer(message.getId(), State.INVALID, time, "Данные не прошли валидацию");
         }
         try {
             log.info("Отправлено " + mapper.writeValueAsString(answer));
