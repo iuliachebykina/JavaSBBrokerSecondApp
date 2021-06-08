@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Answer {
-    private int id;
+    private long id;
     private State state;
     private String time;
     private String message;

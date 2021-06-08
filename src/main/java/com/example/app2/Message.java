@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Entity(name = "user")
 public class Message {
     @Id
-    private int id;
+    private long id;
     @NotBlank
     @Size(min = 3, max = 50, message = "Слишком большое или слишком маленькое имя. Размер имени должен быть от 3 до 50 знаков")
     private String name;
